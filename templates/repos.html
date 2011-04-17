@@ -3,7 +3,7 @@
 
 <ul>
 {% for X in repos %}
-    <li>{{X}}</li>
+    <li><a href="{{url_for('repo', repo_path=X, rev='tip')}}">{{X}}</a></li>
 {% endfor %}
 </ul>
 
