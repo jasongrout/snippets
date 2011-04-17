@@ -1,8 +1,8 @@
-[ ] A small class abstracting the repository operations we need.  We can implement a git or an hg backend.
+[X] A small class abstracting the repository operations we need.  We can implement a git or an hg backend.
 
-[ ] A listing of all repositories
+[X] A listing of all repositories
 
-[ ] Have a text box which allows you to display the current contents of a repository, lists the revisions on the side, and lets you change the textbox to create a new revision
+[X] Have a text box which allows you to display the current contents of a repository, lists the revisions on the side, and lets you change the textbox to create a new revision
 
 [ ] URL to download the repository
 
@@ -22,3 +22,4 @@
 
 [ ] OpenID logins (I think we only want to support OpenID; this simplifies our life a bit)
 
+[ ] Some interface to see the tree of revisions, not just a linear history
