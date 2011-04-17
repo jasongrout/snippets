@@ -1,0 +1,24 @@
+[ ] A small class abstracting the repository operations we need.  We can implement a git or an hg backend.
+
+[ ] A listing of all repositories
+
+[ ] Have a text box which allows you to display the current contents of a repository, lists the revisions on the side, and lets you change the textbox to create a new revision
+
+[ ] URL to download the repository
+
+[ ] A "fork" button that lets you create a new repository cloned from a revision displayed.  You should be able to give a name to your new repository
+
+[ ] Syntax highlighting of python script (syntax highlighting done by the file extension/mime type)
+
+[ ] An AJAX method of adding a new file to the snippet
+
+[ ] A button to execute the snippet on the single-cell server.  In the case of multiple files, an "active file" should be designated that is executed when the execute button is pressed.  If only one file, that file is the "active file".  The active file is executed as if each command were typed into the command line, I think.
+
+[ ] A database to keep track of each snippet
+
+[ ] Tags for labeling snippets.
+
+[ ] URL to push local changes to the snippet
+
+[ ] OpenID logins (I think we only want to support OpenID; this simplifies our life a bit)
+
