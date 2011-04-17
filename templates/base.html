@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Sage Snippet Database</title>
+<script type=text/javascript>
+// Make the script root available to jquery
+$URL={'script': {{ request.script_root|tojson|safe }},
+};
+</script>
+<script type=text/javascript src="{{url_for('static', filename='jquery-1.5.min.js')}}"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='stylesheet.css')}}"/>
+</head>
+
+{% block body %}
+{% endblock %}
+</html>
