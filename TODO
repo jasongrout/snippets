@@ -23,3 +23,16 @@
 [ ] OpenID logins (I think we only want to support OpenID; this simplifies our life a bit)
 
 [ ] Some interface to see the tree of revisions, not just a linear history
+
+
+Git Gist comparison
+-------------------
+It appears that github gists: 
+
+  * only allow editing the tip of the gist
+  * only allow downloading the tip of the gist
+  * provide a way to get a git clone of a gist
+  * forking forks the entire repository, so again you can only edit the tip.  There isn't a way to fork at a previous version of the gist and start editing that.
+  * Comments apply to the entire gist, and are carried along with a fork
+  * starring and unstarring can be done on any version of the gist, but apply to the entire gist
+  * it appears that only the master branch is shown.  Other branches can be pushed via git push, but only the master branch is shown on the webpage.  If the master branch is changed to point to a different branch, then force-pushed, it is updated on the webpage.  The repository itself can contain multiple branches, though; it's just that the web gist interface doesn't expose the other branches. 
