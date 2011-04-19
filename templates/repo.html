@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<ul>
+{% for r in ancestors %}
+    <li><a href="{{url_for('repo', repo_path=repo_path, rev=r)}}">{{r}}</a></li>
+{% endfor %}
+    <li>{{rev}}</li>
+{% for r in descendants %}
+    <li><a href="{{url_for('repo', repo_path=repo_path, rev=r)}}">{{r}}</a></li>
+{% endfor %}
+</ul>
+
+<h2>{{message}}</h2>
+<form method="post" action="{{url_for('new_revision',
+repo_path=repo_path, rev=rev)}}">
+<ul>
+{% for filename,content in files.items() %}
+    <li><p>{{filename}}:</br>
+        <textarea rows=20 cols='120' name='{{filename}}'>{{content}}</textarea></p></li>
+{% endfor %}
+</ul>
+Commit Message: <input type="text" name="message" size=120/><br/>
+<input type="submit" value="Make new revision"/>
+</form>
+<hr/>
+<a href="{{url_for('list_of_repos')}}">List of Snippet Repositories</a>
+{% endblock body %}

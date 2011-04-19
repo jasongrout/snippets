@@ -7,6 +7,9 @@
 {% endfor %}
 </ul>
 
-Create New Repo
+<form action="{{url_for('create_repo')}}" method="post">
+New Snippet: <input type="text" name="repo_path"/>
+<input type="submit"/>
+</form>
 
 {% endblock body %}

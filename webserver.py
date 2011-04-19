@@ -5,11 +5,17 @@ from repository import HGRepository as Repository
 app = Flask(__name__)
 
 
-REPO_DIR='repos'
-
 @app.route("/")
 def list_of_repos():
     return render_template('repos.html', repos=os.listdir(REPO_DIR))
+
+@app.route("/create_repo", methods=['POST'])
+def create_repo():
+    repo_path=request.form['repo_path']
+    Repository.init(os.path.join(REPO_DIR,repo_path))
+    repo=Repository(os.path.join(REPO_DIR,repo_path))
+    repo.commit('DEFAULT USER', 'Initial commit', 0, {'snippet':''})
+    return redirect(url_for('repo', repo_path=repo_path, rev='tip'))
 
 @app.route("/repo/<repo_path>/<rev>/")
 def repo(repo_path,rev):
@@ -32,4 +38,19 @@ def new_revision(repo_path, rev):
     return redirect(url_for('repo', repo_path=repo_path, rev=new_rev))
 
 if __name__ == "__main__":
+    from optparse import OptionParser
+    parser = OptionParser()
+    parser.add_option("--repositories", dest="repositories", default='repositories',
+                      help="store repositories in DIR", metavar="DIR")
+
+    (options, args) = parser.parse_args()
+    
+    # make repository directory
+    import os
+    global REPO_DIR
+    REPO_DIR=options.repositories
+    if not os.path.exists(REPO_DIR):
+        # slight race condition
+        os.makedirs(REPO_DIR)
+
     app.run(debug=True)

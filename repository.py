@@ -7,19 +7,12 @@ class Repository(object):
         files is a dictionary of the form {'filename': content, 'filename': content}.  Not all of the files in the repository need to be listed.  Any files that are listed are set to the value of content and the changes are committed with the commit message.
         """
         pass
-    def commit(self, message):
-        "Commit the current revision to the repository."
-
     def file(self, filename, revision='tip'):
         "Return the contents of filename at the revision specified."
         pass
         
     def list_files(self, revision='tip'):
         "Return the list of filenames at the specified revision."
-        pass
-
-    def create(self, path):
-        "Create an empty repository"
         pass
 
     def ancestors(self, revision='tip'):
@@ -34,7 +27,11 @@ class HGRepository(Repository):
         self.ui = ui.ui()
         self.repo = hg.repository(self.ui, self.path)
         
-        
+    @staticmethod
+    def init(path):
+        "Initialize a mercurial repository."
+        commands.init(ui.ui(), path)
+
     def commit(self, user, message, rev, filedata):
         """Commit a change.
 
@@ -74,5 +71,16 @@ class HGRepository(Repository):
         "Return a list of revision ids of ancestors to the specified revision"
         return [str(c) for c in self.repo[revision].ancestors()]
 
-    def descendants(self, revision='tip'):
-        return [str(c) for c in self.repo[revision].descendants()]
+    def graphlog(self):
+        pass
+        
+    def descendants(self, revision='tip', tree=False):
+        if not tree:
+            return [str(c) for c in self.repo[revision].descendants()]
+        else:
+            pass
+        #descendants=[]
+        #    children
+        #    changeset=self.repo[revision]
+        #    while len(changeset.children()
+
