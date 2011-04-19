@@ -5,6 +5,17 @@ This website aims to provide a version controlled snippet database.
 
 See the TODO.txt file for a list of things to do.
 
+To Run
+======
+
+This project requires Mercurial to be installed (that is what the repositories use).  It also requires Flask to be installed.  To run, simply do::
+
+    python webserver.py
+
+Then open your browser to the indicated URL.  There, you can create a new snippet (repository), list the currently created repositories, and create new versions of snippets in the repositories.  If you edit a version of a snippet that is not the tip (HEAD) version, it forks the snippet and branches at that commit.  The UI doesn't show this very well at this point, though.
+
+Design Goals
+============
 Goal: Design an online library of interacts and other snippets of Sage code.  This library should allow:
   * syntax-highlighting of snippets of code
   * multiple files in a snippet
